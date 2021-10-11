@@ -1,0 +1,36 @@
+{
+    "name": "jcaillot/laminas-before-validator",
+    "description": "Laminas Validator; Let you compare two date strings",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laminas",
+        "date",
+        "validator"
+    ],
+    "require": {
+        "php": "^7.4 || ~8.0.0",
+        "laminas/laminas-mvc": "^3.1",
+        "laminas/laminas-validator": "^2.15"
+    },
+    "require-dev": {
+        "laminas/laminas-developer-tools": "^2.1.1",
+        "laminas/laminas-test": "^3.4.2",
+        "phpstan/phpstan": "^0.12.99",
+        "friendsofphp/php-cs-fixer": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chaman\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ChamanTest\\": "test"
+        }
+    },
+    "scripts": {
+        "phpstan": "php vendor/bin/phpstan analyse src test",
+        "phpcs": "php vendor/bin/php-cs-fixer fix src"
+    }
+}
