@@ -50,15 +50,18 @@ class BeforeValidator extends AbstractValidator
      */
     public function isValid($value, $context = null): bool
     {
-        $secondDateFieldValue = $context[$this->secondDateFieldName];
-
-        $date1 = DateTime::createFromFormat($this->dateTimeFormat, $value);
-        $date2 = DateTime::createFromFormat($this->dateTimeFormat, $secondDateFieldValue);
-
         $isValid = true;
 
-        if (!$date1 || !$date2) {
+        $date1 = DateTime::createFromFormat($this->dateTimeFormat, $value);
+        if (!$date1) {
             $this->error(self::NOT_A_VALID_DATE, $value);
+            $isValid = false;
+        }
+
+        $secondDateFieldValue = $context[$this->secondDateFieldName];
+        $date2 = DateTime::createFromFormat($this->dateTimeFormat, $secondDateFieldValue);
+        if (!$date2) {
+            $this->error(self::NOT_A_VALID_DATE, $secondDateFieldValue);
             $isValid = false;
         }
 
